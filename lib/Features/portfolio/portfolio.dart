@@ -27,14 +27,14 @@ class _PortfolioState extends State<Portfolio> {
             SizedBox(height: 40),
             Text(
               "Portfolio",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 57, 31, 104)),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 42, 26, 70)),
             ),
             SizedBox(height: 10),
             Center(
               child: Column(
                 children: [
-                  Text("Current Value", style: TextStyle(fontSize: 14, color: const Color.fromARGB(255, 57, 31, 104))),
-                  Text("\$4,00,000", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 57, 31, 104))),
+                  Text("Current Value", style: TextStyle(fontSize: 14, color: const Color.fromARGB(255, 42, 26, 70))),
+                  Text("\$4,00,000", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 42, 26, 70))),
                 ],
               ),
             ),
@@ -54,7 +54,7 @@ class _PortfolioState extends State<Portfolio> {
                     onPressed: () {},
                     child: Text("My Holdings"),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 57, 31, 104),
+                      backgroundColor: const Color.fromARGB(255, 42, 26, 70),
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                     ),
@@ -66,8 +66,8 @@ class _PortfolioState extends State<Portfolio> {
                     onPressed: () {},
                     child: Text("Exited"),
                     style: OutlinedButton.styleFrom(
-                      foregroundColor: const Color.fromARGB(255, 57, 31, 104),
-                      side: BorderSide(color: const Color.fromARGB(255, 57, 31, 104)),
+                      foregroundColor: const Color.fromARGB(255, 42, 26, 70),
+                      side: BorderSide(color: const Color.fromARGB(255, 42, 26, 70)),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                     ),
                   ),
@@ -82,7 +82,7 @@ class _PortfolioState extends State<Portfolio> {
                   onPressed: () {},
                   icon: Icon(Icons.sort, color: const Color.fromARGB(255, 237, 233, 233)),
                   label: Text("Sort", style: TextStyle(color: Colors.white)),
-                  style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 57, 31, 104)),
+                  style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 42, 26, 70)),
                 ),
                 Text("Current", style: TextStyle(fontWeight: FontWeight.bold)),
                 Text("ROI", style: TextStyle(fontWeight: FontWeight.bold)),
@@ -127,7 +127,7 @@ class _PortfolioState extends State<Portfolio> {
               onPressed: () {},
               icon: Icon(Icons.pie_chart, color: Colors.white),
               label: Text("Portfolio", style: TextStyle(color: Colors.white)),
-              style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 57, 31, 104)),
+              style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 42, 26, 70)),
             ),
             IconButton(icon: Icon(Icons.person, color: Colors.grey), onPressed: () {}),
 

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:xelvorth/Features/Home/home.dart';
 import 'package:xelvorth/Features/Home/homedetails.dart';
 import 'package:xelvorth/Features/Home/notifications.dart';
+import 'package:xelvorth/Features/portfolio/portfolio.dart';
 import 'package:xelvorth/Routes/routes_constants.dart';
 
 class AppRouter {
@@ -29,6 +30,12 @@ class AppRouter {
           path: RoutesConstants.homedetails,
           builder: (BuildContext context, GoRouterState state) {
             return const Homedetails();
+          },
+        ),
+        GoRoute(
+          path: RoutesConstants.portpolio,
+          builder: (BuildContext context, GoRouterState state) {
+            return const Portfolio();
           },
         ),
    

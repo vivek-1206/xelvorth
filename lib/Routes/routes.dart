@@ -4,6 +4,7 @@ import 'package:xelvorth/Features/Home/home.dart';
 import 'package:xelvorth/Features/Home/homedetails.dart';
 import 'package:xelvorth/Features/Home/notifications.dart';
 import 'package:xelvorth/Features/portfolio/portfolio.dart';
+import 'package:xelvorth/Features/portfolio/portfolio1.dart';
 import 'package:xelvorth/Routes/routes_constants.dart';
 
 class AppRouter {
@@ -18,6 +19,12 @@ class AppRouter {
           path: RoutesConstants.homescreen,
           builder: (BuildContext context, GoRouterState state) {
             return const Home();
+          },
+        ),
+        GoRoute(
+          path: RoutesConstants.portpolio1,
+          builder: (BuildContext context, GoRouterState state) {
+            return const Portfolio1();
           },
         ),
         GoRoute(

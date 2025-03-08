@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/portfolio/portfolio1.dart';
 
 class Portfolio extends StatefulWidget {
   const Portfolio({ Key? key }) : super(key: key);
@@ -51,7 +52,9 @@ class _PortfolioState extends State<Portfolio> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Portfolio()));
+                    },
                     child: Text("My Holdings"),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 42, 26, 70),
@@ -63,7 +66,9 @@ class _PortfolioState extends State<Portfolio> {
                 SizedBox(width: 10),
                 Expanded(
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Portfolio1()));
+                    },
                     child: Text("Exited"),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: const Color.fromARGB(255, 42, 26, 70),

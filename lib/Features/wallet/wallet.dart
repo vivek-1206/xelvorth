@@ -53,11 +53,11 @@ class _WalletScreenState extends State<WalletScreen> {
             const SizedBox(height: 16),
             Row(
               children: [
-                Expanded(child: buildActionButton(Icons.add, "Deposit")),
+                Expanded(child: buildActionButton(Icons.add, "Deposit",(){})),
                 SizedBox(width: 10),
-                Expanded(child: buildActionButton(Icons.sync_alt, "Invest")),
+                Expanded(child: buildActionButton(Icons.sync_alt, "Invest",(){})),
                 SizedBox(width: 10),
-                Expanded(child: buildActionButton(Icons.download, "Withdraw")),
+                Expanded(child: buildActionButton(Icons.download, "Withdraw",(){})),
               ],
             ),
             const SizedBox(height: 20),
@@ -145,17 +145,19 @@ class _WalletScreenState extends State<WalletScreen> {
  );
   }
 
-  Widget buildActionButton(IconData icon, String label) {
-    return Container(
+  Widget buildActionButton(IconData icon, String label, VoidCallback onTap) {
+  return GestureDetector(
+    onTap: onTap, // Handle tap to navigate
+    child: Container(
       padding: const EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 55, 36, 102),
+        color: const Color.fromARGB(255, 55, 36, 102),
         borderRadius: BorderRadius.circular(25),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.shade300,
             blurRadius: 8,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -167,8 +169,10 @@ class _WalletScreenState extends State<WalletScreen> {
           Text(label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   Widget buildTransactionCard(String gateway, String status, Color statusColor) {
     Color textColor = Colors.black54;

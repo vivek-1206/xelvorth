@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/Home/notifications.dart';
 
 class Homescreen1 extends StatefulWidget {
   const Homescreen1({super.key});
@@ -24,7 +25,9 @@ class _RealEstateScreenState extends State<Homescreen1> {
         actions: [
           IconButton(
             icon: Icon(Icons.notifications, color: Color.fromARGB(255, 42, 26, 70)),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Notifications()));
+            },
           )
         ],
       ),

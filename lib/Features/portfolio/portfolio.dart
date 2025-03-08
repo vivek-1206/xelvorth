@@ -24,12 +24,12 @@ class _PortfolioState extends State<Portfolio> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 40),
+            SizedBox(height: 70),
             Text(
               "Portfolio",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 42, 26, 70)),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 30),
             Center(
               child: Column(
                 children: [
@@ -38,7 +38,7 @@ class _PortfolioState extends State<Portfolio> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -46,7 +46,7 @@ class _PortfolioState extends State<Portfolio> {
                 InfoCard(title: "Total Returns", value: "+ \$1,00,000", textColor: Colors.green),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 30),
             Row(
               children: [
                 Expanded(
@@ -74,7 +74,7 @@ class _PortfolioState extends State<Portfolio> {
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -89,7 +89,6 @@ class _PortfolioState extends State<Portfolio> {
                 Text("Returns", style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
-              
             
             Expanded(
               child: ListView.builder(
@@ -120,7 +119,6 @@ class _PortfolioState extends State<Portfolio> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            
             IconButton(icon: Icon(Icons.home, color: Colors.grey), onPressed: () {}),
             IconButton(icon: Icon(Icons.wallet, color: Colors.grey), onPressed: () {}),
           ElevatedButton.icon(
@@ -130,21 +128,17 @@ class _PortfolioState extends State<Portfolio> {
               style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 42, 26, 70)),
             ),
             IconButton(icon: Icon(Icons.person, color: Colors.grey), onPressed: () {}),
-
           ],
         ),
       ),
     );
   }
 }
-
 class InfoCard extends StatelessWidget {
   final String title;
   final String value;
   final Color textColor;
-
   InfoCard({required this.title, required this.value, this.textColor = Colors.black});
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -165,16 +159,13 @@ class InfoCard extends StatelessWidget {
     );
   }
 }
-
 class PortfolioItem extends StatelessWidget {
   final String title;
   final String current;
   final String roi;
   final String returns;
   final Color color;
-
   PortfolioItem({required this.title, required this.current, required this.roi, required this.returns, required this.color});
-
   @override
   Widget build(BuildContext context) {
     return Container(

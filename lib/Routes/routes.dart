@@ -5,6 +5,7 @@ import 'package:xelvorth/Features/Home/homedetails.dart';
 import 'package:xelvorth/Features/Home/notifications.dart';
 import 'package:xelvorth/Features/portfolio/portfolio.dart';
 import 'package:xelvorth/Features/portfolio/portfolio1.dart';
+import 'package:xelvorth/Features/wallet/wallet.dart';
 import 'package:xelvorth/Routes/routes_constants.dart';
 
 class AppRouter {
@@ -13,7 +14,7 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: RoutesConstants.homedetails,
+      initialLocation: RoutesConstants.walletScreen,
       routes: <RouteBase>[
         GoRoute(
           path: RoutesConstants.homescreen,
@@ -45,7 +46,12 @@ class AppRouter {
             return const Portfolio();
           },
         ),
-   
+        GoRoute(
+          path: RoutesConstants.walletScreen,
+          builder: (BuildContext context, GoRouterState state) {
+            return  WalletScreen();
+          },
+        ),
       ],
       errorBuilder: (BuildContext context, GoRouterState state) {
         return const Scaffold(

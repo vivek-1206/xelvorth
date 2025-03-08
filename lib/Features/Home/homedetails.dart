@@ -1,6 +1,10 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:xelvorth/Features/Home/notifications.dart';
+
+
+import 'package:latlong2/latlong.dart';
 
 class Homedetails extends StatefulWidget {
   const Homedetails({ Key? key }) : super(key: key);
@@ -10,6 +14,9 @@ class Homedetails extends StatefulWidget {
 }
 
 class _HomedetailsState extends State<Homedetails> {
+  final MapController _mapController = MapController();
+  final double _zoomLevel = 12.0;
+
   List<String> photoAssets = [
   'assets/Detailphoto1.png',
   'assets/Detailsphoto2.png',
@@ -55,7 +62,7 @@ class _HomedetailsState extends State<Homedetails> {
                       ),
                       SizedBox(height: 5),
                       Text(
-                        "\$20,000.00 /share",
+                        "\$20,000.00 /shares",
                         style: GoogleFonts.poppins(fontSize: 18, color: Colors.white),
                       ),
                     ],
@@ -71,7 +78,7 @@ class _HomedetailsState extends State<Homedetails> {
                   Text("Description", style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.bold)),
                   SizedBox(height: 2),
                   Text(
-                    "We are Hostelgeeks, the premium brand awarding hostels to become 5 Star Hostels...",
+                    "We are Hostelgeeks, the premium brand awarding hostels to become 5 Star Hostels the premium brand awarding hostels to become 5 Star Hostels...",
                     style: GoogleFonts.poppins(fontSize: 14, color: Colors.grey[600]),
                   ),
                   SizedBox(height: 10),
@@ -81,7 +88,7 @@ class _HomedetailsState extends State<Homedetails> {
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount:
-                          photoAssets.length, // Use the length of the list
+                          photoAssets.length, 
                       itemBuilder: (context, i) {
                         return Padding(
                           padding: EdgeInsets.only(right: 8.0),
@@ -96,12 +103,162 @@ class _HomedetailsState extends State<Homedetails> {
                   ),
                   SizedBox(height: 20),
                   Text("Graph", style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.bold)),
-                  Container(
-                    height: 150,
-                    width: double.infinity,
-                    color: Colors.grey[200],
-                    child: Center(child: Text("Graph Placeholder")),
+            Container(
+      height: 200,
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            blurRadius: 5,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
+      child: LineChart(
+        LineChartData(
+          minX: 0,
+          maxX: 3,
+          minY: 0,
+          maxY: 10,
+          titlesData: FlTitlesData(
+            leftTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                reservedSize: 30,
+                interval: 5,
+                getTitlesWidget: (value, meta) {
+                  return Text(
+                    value.toInt().toString(),
+                    style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey),
+                  );
+                },
+              ),
+            ),
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                reservedSize: 30,
+                getTitlesWidget: (value, meta) {
+                  switch (value.toInt()) {
+                    case 0:
+                      return Text("Sep", style: GoogleFonts.poppins(fontSize: 12));
+                    case 1:
+                      return Text("Oct", style: GoogleFonts.poppins(fontSize: 12));
+                    case 2:
+                      return Text("Nov", style: GoogleFonts.poppins(fontSize: 12));
+                    case 3:
+                      return Text("Dec", style: GoogleFonts.poppins(fontSize: 12));
+                    default:
+                      return Text("");
+                  }
+                },
+              ),
+            ),
+            topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          ),
+          gridData: FlGridData(
+            show: true,
+            drawHorizontalLine: true,
+            drawVerticalLine: false,
+            getDrawingHorizontalLine: (value) {
+              if (value == 5) {
+                return FlLine(color: Colors.grey.withOpacity(0.3), strokeWidth: 2);
+              }
+              return FlLine(color: Colors.grey.withOpacity(0.3), strokeWidth: 1);
+            },
+          ),
+          borderData: FlBorderData(
+            show: true,
+            border: Border.all(color: Colors.grey.withOpacity(0.3)),
+          ),
+          lineBarsData: [
+            LineChartBarData(
+              spots: [
+                FlSpot(0, 1),
+                FlSpot(0.5, 2),
+                FlSpot(1, 2.5),
+                FlSpot(1.5, 5),
+                FlSpot(2, 5.5),
+                FlSpot(2.5, 8),
+                FlSpot(3, 10),
+              ],
+              isCurved: true,
+              color: Colors.green,
+              barWidth: 3,
+              isStrokeCapRound: true,
+              belowBarData: BarAreaData(
+                show: true,
+                color: Colors.green.withOpacity(0.2),
+              ),
+              dotData: FlDotData(show: true), // ✅ Shows dots at each point
+            ),
+          ],
+          lineTouchData: LineTouchData(
+            touchTooltipData: LineTouchTooltipData(
+             // tooltipBgColor: Colors.black87,
+              tooltipRoundedRadius: 8,
+              fitInsideHorizontally: true,
+              fitInsideVertically: true,
+              getTooltipItems: (List<LineBarSpot> touchedSpots) {
+                return touchedSpots.map((spot) {
+                  return LineTooltipItem(
+                    "\$${(spot.y * 1000).toInt()}",
+                    GoogleFonts.poppins(
+                        fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold),
+                  );
+                }).toList();
+              },
+            ),
+            touchCallback: (FlTouchEvent event, LineTouchResponse? touchResponse) {
+              if (event is FlTapUpEvent && touchResponse != null) {
+                final touchedSpot = touchResponse.lineBarSpots?.first;
+                if (touchedSpot != null) {
+                  print("Touched Spot: X=${touchedSpot.x}, Y=${touchedSpot.y}");
+                }
+              }
+            },
+            touchSpotThreshold: 10, // ✅ Improves touch accuracy
+            handleBuiltInTouches: true, // ✅ Enables touch functionality
+          ),
+        ),
+      ),
+    ),
+    SizedBox(height: 20,),
+Row(
+              children: [
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    child: Text("Price Graph"),
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 55, 36, 102),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                    ),
                   ),
+                ),
+                SizedBox(width: 10),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text("ROI Graph"),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: const Color.fromARGB(255, 55, 36, 102),
+                      side: BorderSide(color: const Color.fromARGB(255, 55, 36, 102)),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+      
+      
+
                   SizedBox(height: 20),
                    Container(
                     padding: EdgeInsets.all(10),
@@ -125,6 +282,8 @@ class _HomedetailsState extends State<Homedetails> {
                       ],
                     ),
                   ),
+ 
+      
                   SizedBox(height: 20),
                   Text("Property Details", style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.bold)),
                  // Progress Indicator
@@ -133,7 +292,7 @@ class _HomedetailsState extends State<Homedetails> {
                     child: LinearProgressIndicator(
                       value: 0.78,
                       backgroundColor: Colors.grey[300],
-                      color: Colors.deepPurple,
+                      color: const Color.fromARGB(255, 55, 36, 102),
                       minHeight: 10,
                     ),
                   ),
@@ -147,21 +306,21 @@ class _HomedetailsState extends State<Homedetails> {
                         "78% Funded",
                         style: GoogleFonts.poppins(
                             fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.deepPurple),
+                            fontWeight: FontWeight.w500,
+                            color: const Color.fromARGB(255, 55, 36, 102)),
                       ),
                       Text(
                         "2 Investors",
                         style: GoogleFonts.poppins(
                             fontSize: 14,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             color: Colors.grey[600]),
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
-
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
+               Text("Key Points", style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.bold)),
+                
                  SizedBox(
                     height: 100, 
                     child: SingleChildScrollView(
@@ -209,77 +368,200 @@ class _HomedetailsState extends State<Homedetails> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  Container(
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          blurRadius: 5,
-                          spreadRadius: 2,
-                        ),
-                      ],
+                   Text("Location", style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.bold)),
+                    SizedBox(height: 10),
+         Container(
+          height: 300,
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.4),
+                blurRadius: 8, // Smooth shadow effect
+                spreadRadius: 3,
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: FlutterMap(
+              mapController: _mapController,
+              options: MapOptions(
+                initialCenter: LatLng(17.3850, 78.4867), 
+                initialZoom: _zoomLevel,
+              ),
+              children: [
+                TileLayer(
+                  urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                  subdomains: ['a', 'b', 'c'],
+                ),
+                 MarkerLayer(
+                  markers: [
+                    Marker(
+                      point: LatLng(17.3850, 78.4867), 
+                      width: 40,
+                      height: 40,
+                      child: Icon(Icons.location_pin, color: const Color.fromARGB(255, 55, 36, 102), size: 40),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Top Investor",
-                          style: GoogleFonts.poppins(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(height: 10),
-                        ListTile(
-                          leading: CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('assets/blackrock.png')),
-                          title: Text(
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+                  SizedBox(height: 20),
+                  Container(
+            padding: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  blurRadius: 5,
+                  spreadRadius: 2,
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+               
+              children: [
+                Row(
+                  children: [
+                    // Title
+                    Expanded(
+                      child: Text(
+                        "Top Investor",
+                        style: GoogleFonts.poppins(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  
+                    GestureDetector(
+                      onTap: () {
+                        
+                      },
+                      child: CircleAvatar(
+                        radius: 18, 
+                        backgroundColor: const Color.fromARGB(255, 55, 36, 102),
+                        child: Icon(Icons.arrow_back_ios_new, size: 18, color: Colors.white),
+                      ),
+                    ),
+                    SizedBox(width: 25), 
+                   
+                    GestureDetector(
+                      onTap: () {
+                        
+                      },
+                      child: CircleAvatar(
+                        radius: 18, 
+                        backgroundColor: const Color.fromARGB(255, 55, 36, 102),
+                        child: Icon(Icons.arrow_forward_ios, size: 18, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    
+                   Container(
+                      width: 90,
+                      height: 80,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        
+                        color: const Color.fromARGB(255, 13, 96, 159),
+                      ),
+                      child: Text(
+                        "BlackRock", // First letter or initials
+                        style: GoogleFonts.poppins(
+                            fontSize: 13, fontWeight: FontWeight.bold, color: Colors.white),
+                      ),
+                    ),
+                    SizedBox(width: 12),
+                 
+                    
+                   
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          
+                          SizedBox(height: 5),
+                          Text(
                             "BlackRock",
                             style: GoogleFonts.poppins(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
-                          subtitle: Row(
-                            children: [
-                              Text("Join 1 month ago",
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 14, color: Colors.black54)),
-                            ],
+                          Text(
+                            "Joined 1 month ago",
+                            style: GoogleFonts.poppins(
+                                fontSize: 14, color: Colors.black54),
                           ),
-                          
-                        ),
-                       Row(
+                          SizedBox(height: 20),
+                          Row(
                             children: [
-                              Icon(Icons.apartment,
-                                  size: 16,
-                                  color: Colors.deepPurple), // Building icon
+                              Icon(Icons.apartment, size: 16, color: const Color.fromARGB(255, 55, 36, 102)),
                               SizedBox(width: 4),
                               Text("4 Properties",
                                   style: GoogleFonts.poppins(
                                       fontSize: 14, color: Colors.black54)),
                               SizedBox(width: 8),
-                              Icon(Icons.location_on,
-                                  size: 16,
-                                  color: Colors.deepPurple), // Location icon
+                              Icon(Icons.location_on, size: 16, color: const Color.fromARGB(255, 55, 36, 102)),
                               SizedBox(width: 4),
                               Text("India",
                                   style: GoogleFonts.poppins(
                                       fontSize: 14, color: Colors.black54)),
                             ],
                           ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        
 
                   SizedBox(height: 20),
                   Text("Documents", style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.bold)),
-                  for (var i = 0; i < 3; i++)
-                    ListTile(
-                      leading: Icon(Icons.picture_as_pdf, color: Colors.deepPurple),
-                      title: Text("Investor Memo - Sky Garden"),
+            Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              3, // Generates 3 list items
+              (index) => Column(
+                children: [
+                  DecoratedBox(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Color.fromARGB(255, 55, 36, 102), width: 1), // Add border
+                      borderRadius: BorderRadius.circular(10), // Rounded edges
+                    ),
+                    child: ListTile(
+                      leading: Icon(Icons.picture_as_pdf, color: Color.fromARGB(255, 55, 36, 102)),
+                      title: Text(
+                        "Investor Memo - Sky Garden",
+                        style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500,color:Color.fromARGB(255, 55, 36, 102) ),
+                      ),
                       trailing: Icon(Icons.arrow_forward_ios, size: 16),
                     ),
+                  ),
+                  SizedBox(height: 8), // Space between each list item
+                ],
+              ),
+            ),
+          ),
+        
+        
+        
                   SizedBox(height: 20),
                 ],
               ),
@@ -295,7 +577,7 @@ Widget detailCard(String value, String label) {
   return Container(
     padding: EdgeInsets.all(12),
     decoration: BoxDecoration(
-      color: Colors.deepPurple,
+      color: Color.fromARGB(255, 55, 36, 102),
       borderRadius: BorderRadius.circular(10),
       boxShadow: [
         BoxShadow(
@@ -311,7 +593,7 @@ Widget detailCard(String value, String label) {
       children: [
         Text(
           value,
-          style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.bold,color: Colors.white),
+          style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w500,color: Colors.white),
         ),
         SizedBox(height: 4),
         Text(
@@ -345,7 +627,7 @@ Widget detailTile(String title, String value, {IconData? icon}) {
         ),
         Text(
           value,
-          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.deepPurple),
+          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500, color: Color.fromARGB(255, 55, 36, 102)),
         ),
       ],
     ),

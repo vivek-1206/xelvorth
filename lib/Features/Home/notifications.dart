@@ -109,7 +109,7 @@ class _NotificationsState extends State<Notifications> {
                 text: "Rajgopal ",
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF463082),
+                  color: Color.fromARGB(255, 55, 36, 102),
                   fontSize: 16,
                 ),
                 children: [

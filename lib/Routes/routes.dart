@@ -15,7 +15,7 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: RoutesConstants.profilescreen,
+      initialLocation: RoutesConstants.portpolio,
       routes: <RouteBase>[
         GoRoute(
           path: RoutesConstants.homescreen,

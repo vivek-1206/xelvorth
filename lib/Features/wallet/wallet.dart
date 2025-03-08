@@ -84,10 +84,12 @@ class _WalletScreenState extends State<WalletScreen> {
                     ? [
                         buildTransactionCard("Bank", "Pending", Colors.yellow.shade700),
                         buildTransactionCard("UPI", "Approved", Colors.green.shade700),
+                        buildTransactionCard("UPI", "Rejected", Colors.red),
                       ]
                     : [
                         buildTransactionCard("Bank", "Pending", Colors.yellow.shade700),
                         buildTransactionCard("UPI", "Approved", Colors.green.shade700),
+                         buildTransactionCard("UPI", "Rejected", Colors.red),
                       ],
               ),
             ),

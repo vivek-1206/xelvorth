@@ -27,7 +27,7 @@ class _NotificationsState extends State<Notifications> {
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF463082),
+            color: Color.fromARGB(255, 55, 36, 102),
           ),
         ),
       ),
@@ -99,7 +99,7 @@ class _NotificationsState extends State<Notifications> {
             child: Icon(
               Icons.circle,
               size: 6,
-              color: Color(0xFF463082),
+              color: Color.fromARGB(255, 55, 36, 102),
             ),
           ),
           const SizedBox(width: 10),

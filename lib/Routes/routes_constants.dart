@@ -5,9 +5,7 @@ class RoutesConstants {
   static const String portpolio = '/portpolio';
   static const String portpolio1 = '/portpolio1';
   static const String walletScreen = "/wallet";
-
-
-
+  static const String profilescreen  = "/profile";
 }
 
  

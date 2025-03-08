@@ -42,7 +42,7 @@ class _WalletScreenState extends State<WalletScreen> {
                   Text(
                     "\$ 4,00,000",
                     style: TextStyle(
-                      color: Color(0xFF2E1D56),
+                      color: Color.fromARGB(255, 55, 36, 102),
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                     ),
@@ -119,7 +119,7 @@ class _WalletScreenState extends State<WalletScreen> {
         ),
         ElevatedButton.icon(
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF2E1D56), // Primary button color
+            backgroundColor: Color.fromARGB(255, 55, 36, 102), // Primary button color
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
@@ -147,7 +147,7 @@ class _WalletScreenState extends State<WalletScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
-        color: Color(0xFF2E1D56),
+        color: Color.fromARGB(255, 55, 36, 102),
         borderRadius: BorderRadius.circular(25),
         boxShadow: [
           BoxShadow(
@@ -243,15 +243,15 @@ class _WalletScreenState extends State<WalletScreen> {
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(
-            color: isSelected ? Color(0xFF2E1D56) : Colors.white,
+            color: isSelected ? Color.fromARGB(255, 55, 36, 102): Colors.white,
             borderRadius: BorderRadius.circular(25),
-            border: Border.all(color: Color(0xFF2E1D56), width: 2),
+            border: Border.all(color: Color.fromARGB(255, 55, 36, 102), width: 2),
           ),
           child: Center(
             child: Text(
               text,
               style: TextStyle(
-                color: isSelected ? Colors.white : Color(0xFF2E1D56),
+                color: isSelected ? Colors.white : Color.fromARGB(255, 55, 36, 102),
               ),
             ),
           ),

@@ -67,6 +67,60 @@ class _Portfolio1State extends State<Portfolio1> {
     {"title": "Luxury Condominium", "current": "\$20,000", "roi": "-2%", "returns": "-\$4,000", "color": Colors.red},
     {"title": "Luxury Condominium", "current": "\$20,000", "roi": "30%", "returns": "+\$20,000", "color": Colors.green},
   ];
+   void _showBottomSheet(BuildContext context, Map<String, dynamic> holding) {
+    showModalBottomSheet(
+      context: context,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(holding["title"], style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text("History >", style: TextStyle(color: Color.fromARGB(255, 55, 36, 102), fontWeight: FontWeight.bold)),
+                ],
+              ),
+              SizedBox(height: 5),
+              Text(holding["current"], style: TextStyle(fontSize: 16, color: const Color.fromARGB(255, 10, 10, 10))),
+              SizedBox(height: 50),
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        padding: EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      ),
+                      child: Text("Sell", style: TextStyle(color: Colors.white, fontSize: 16)),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                        padding: EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      ),
+                      child: Text("Buy", style: TextStyle(color: Colors.white, fontSize: 16)),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -158,35 +212,38 @@ class _Portfolio1State extends State<Portfolio1> {
                 itemBuilder: (context, index) {
                   final holding = holdings[index];
                   Color roiColor = holding["roi"].contains('2%') ? Colors.red : Colors.green;
-                  return Container(
-                    margin: EdgeInsets.symmetric(vertical: 8.0),
-                    padding: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 4,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8), 
-                      child: Row(
-                        children: [
-                          Expanded(flex: 3, child: Text(holding["title"], style: TextStyle(fontSize: 14))),
-                          Expanded(flex: 2, child: Text(holding["current"], style: TextStyle(fontSize: 14))),
-                          Expanded(flex: 2, child: Text(holding["roi"], style: TextStyle(fontSize: 14, color: holding["color"])
-                          )),
-                          Expanded(
-                            flex: 2,
-                            child: Text(holding["returns"], 
-                              style: TextStyle(fontSize: 14, color: holding["color"])
-                            ),
+                  return GestureDetector(
+                    onTap: () => _showBottomSheet(context, holding),
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 8.0),
+                      padding: EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 4,
+                            offset: Offset(0, 2),
                           ),
                         ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8), 
+                        child: Row(
+                          children: [
+                            Expanded(flex: 3, child: Text(holding["title"], style: TextStyle(fontSize: 14))),
+                            Expanded(flex: 2, child: Text(holding["current"], style: TextStyle(fontSize: 14))),
+                            Expanded(flex: 2, child: Text(holding["roi"], style: TextStyle(fontSize: 14, color: holding["color"])
+                            )),
+                            Expanded(
+                              flex: 2,
+                              child: Text(holding["returns"], 
+                                style: TextStyle(fontSize: 14, color: holding["color"])
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -215,8 +272,7 @@ class _Portfolio1State extends State<Portfolio1> {
         ),
       ),
     );
-  }        
-  
+  }  
   Widget _infoCard(String title, String value, [Color color = Colors.black]) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.4,

@@ -29,7 +29,7 @@ class AppRouter {
             return const Portfolio1();
           },
         ),
-        GoRoute(
+                GoRoute(
           path: RoutesConstants.notification,
           builder: (BuildContext context, GoRouterState state) {
             return const Notifications();

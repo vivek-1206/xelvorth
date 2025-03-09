@@ -5,6 +5,10 @@ import 'package:xelvorth/Features/Home/home1/homescreen1.dart';
 import 'package:xelvorth/Features/Home/homedetails.dart';
 import 'package:xelvorth/Features/Home/notifications.dart';
 import 'package:xelvorth/Features/ResetPasswordScreen/ResetPasswordScreen.dart';
+import 'package:xelvorth/Features/kyc/cart_screen.dart';
+import 'package:xelvorth/Features/kyc/kyc.dart';
+import 'package:xelvorth/Features/kyc/kyc_screen.dart';
+import 'package:xelvorth/Features/kyc/return_screen.dart';
 import 'package:xelvorth/Features/otpScreen/otpScreen.dart';
 import 'package:xelvorth/Features/portfolio/portfolio.dart';
 import 'package:xelvorth/Features/portfolio/portfolio1.dart';
@@ -19,7 +23,7 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: RoutesConstants.homedetails,
+      initialLocation: RoutesConstants.CartScreen,
       routes: <RouteBase>[
         GoRoute(
           path: RoutesConstants.resetPasswordScreen,
@@ -82,9 +86,27 @@ class AppRouter {
           },
         ),
         GoRoute(
-          path: RoutesConstants.withdrawScreen,
+          path: RoutesConstants.KycScreen,
           builder: (BuildContext context, GoRouterState state) {
-            return WithdrawScreen();
+            return  KycScreen();
+          },
+        ),
+        GoRoute(
+          path: RoutesConstants.Kyc,
+          builder: (BuildContext context, GoRouterState state) {
+            return Kyc();
+          },
+        ),
+        GoRoute(
+          path: RoutesConstants.ReturnScreen,
+          builder: (BuildContext context, GoRouterState state) {
+            return const ReturnScreen();
+          },
+        ),
+        GoRoute(
+          path: RoutesConstants.CartScreen,
+          builder: (BuildContext context, GoRouterState state) {
+            return const CartScreen();
           },
         ),
       ],

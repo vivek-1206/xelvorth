@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:xelvorth/Features/Home/home.dart';
 import 'package:xelvorth/Features/Home/homedetails.dart';
 import 'package:xelvorth/Features/Home/notifications.dart';
+import 'package:xelvorth/Features/ResetPasswordScreen/ResetPasswordScreen.dart';
+import 'package:xelvorth/Features/otpScreen/otpScreen.dart';
 import 'package:xelvorth/Features/portfolio/portfolio.dart';
 import 'package:xelvorth/Features/portfolio/portfolio1.dart';
 import 'package:xelvorth/Features/profile/profile.dart';
@@ -15,8 +17,14 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: RoutesConstants.walletScreen,
+      initialLocation: RoutesConstants.resetPasswordScreen,
       routes: <RouteBase>[
+        GoRoute(
+          path: RoutesConstants.resetPasswordScreen,
+          builder: (BuildContext context, GoRouterState state) {
+            return const ResetPasswordScreen();
+          },
+        ),
         GoRoute(
           path: RoutesConstants.homescreen,
           builder: (BuildContext context, GoRouterState state) {
@@ -50,13 +58,19 @@ class AppRouter {
         GoRoute(
           path: RoutesConstants.walletScreen,
           builder: (BuildContext context, GoRouterState state) {
-            return  WalletScreen();
+            return WalletScreen();
           },
         ),
-         GoRoute(
+        GoRoute(
           path: RoutesConstants.profilescreen,
           builder: (BuildContext context, GoRouterState state) {
-            return  ProfileScreen();
+            return ProfileScreen();
+          },
+        ),
+        GoRoute(
+          path: RoutesConstants.otpScreen,
+          builder: (BuildContext context, GoRouterState state) {
+            return const OtpScreen();
           },
         ),
       ],

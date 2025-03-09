@@ -17,7 +17,7 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: RoutesConstants.resetPasswordScreen,
+      initialLocation: RoutesConstants.homedetails,
       routes: <RouteBase>[
         GoRoute(
           path: RoutesConstants.resetPasswordScreen,

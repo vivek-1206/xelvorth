@@ -71,7 +71,7 @@ class _InvestmentScreenState extends State<Homescreen2> {
               Text(
                 "\$20,000.00 /shares",
                 style: TextStyle(fontSize: 22, 
-                fontWeight: FontWeight.bold, color:Color.fromARGB(255, 42, 26,70)),
+                fontWeight: FontWeight.bold, color:const Color.fromARGB(255, 55, 36, 102)),
               ),
               SizedBox(height: 20),
 
@@ -88,7 +88,7 @@ class _InvestmentScreenState extends State<Homescreen2> {
                       min: 1,
                       max: 3,
                       divisions: 10,
-                      activeColor: Color.fromARGB(255, 57, 31, 104),
+                      activeColor: const Color.fromARGB(255, 55, 36, 102),
                       inactiveColor: Colors.grey,
                       onChanged: (value) {
                         setState(() {
@@ -101,13 +101,13 @@ class _InvestmentScreenState extends State<Homescreen2> {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
-                      border: Border.all(color:Color.fromARGB(255, 42, 26,70)),
+                      border: Border.all(color:const Color.fromARGB(255, 55, 36, 102)),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
                       lockInPeriod.toStringAsFixed(1),
                       style: TextStyle(fontSize: 16, 
-                      fontWeight: FontWeight.bold, color: Color.fromARGB(255, 42, 26,70)),
+                      fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 55, 36, 102)),
                     ),
                   ),
                 ],
@@ -151,13 +151,13 @@ class _InvestmentScreenState extends State<Homescreen2> {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color.fromARGB(255, 42, 26,70)),
+                      border: Border.all(color: const Color.fromARGB(255, 55, 36, 102)),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
                       "\$${totalAmount.toStringAsFixed(2)}",
                       style: TextStyle(fontSize: 16, 
-                      fontWeight: FontWeight.bold, color: Color.fromARGB(255, 42, 26,70)),
+                      fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 55, 36, 102)),
                     ),
                   ),
                 ],
@@ -188,7 +188,7 @@ class _InvestmentScreenState extends State<Homescreen2> {
   Widget _quantityButton(String symbol, VoidCallback onPressed) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: const Color.fromARGB(255, 42, 26,70),
+        backgroundColor: const Color.fromARGB(255, 55, 36, 102),
         padding: EdgeInsets.all(10),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),

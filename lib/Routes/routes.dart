@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:xelvorth/Features/Home/home.dart';
+import 'package:xelvorth/Features/Home/home1/homescreen1.dart';
 import 'package:xelvorth/Features/Home/homedetails.dart';
 import 'package:xelvorth/Features/Home/notifications.dart';
+import 'package:xelvorth/Features/ResetPasswordScreen/ResetPasswordScreen.dart';
+import 'package:xelvorth/Features/otpScreen/otpScreen.dart';
 import 'package:xelvorth/Features/portfolio/portfolio.dart';
 import 'package:xelvorth/Features/portfolio/portfolio1.dart';
 import 'package:xelvorth/Features/profile/profile.dart';
 import 'package:xelvorth/Features/wallet/wallet.dart';
+import 'package:xelvorth/Features/withdraw/withdraw.dart';
 import 'package:xelvorth/Routes/routes_constants.dart';
 
 class AppRouter {
@@ -15,12 +19,24 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: RoutesConstants.portpolio,
+      initialLocation: RoutesConstants.homedetails,
       routes: <RouteBase>[
+        GoRoute(
+          path: RoutesConstants.resetPasswordScreen,
+          builder: (BuildContext context, GoRouterState state) {
+            return const ResetPasswordScreen();
+          },
+        ),
         GoRoute(
           path: RoutesConstants.homescreen,
           builder: (BuildContext context, GoRouterState state) {
             return const Home();
+          },
+        ),
+        GoRoute(
+          path: RoutesConstants.homescreen1,
+          builder: (BuildContext context, GoRouterState state) {
+            return const Homescreen1();
           },
         ),
         GoRoute(
@@ -50,13 +66,25 @@ class AppRouter {
         GoRoute(
           path: RoutesConstants.walletScreen,
           builder: (BuildContext context, GoRouterState state) {
-            return  WalletScreen();
+            return WalletScreen();
           },
         ),
-         GoRoute(
+        GoRoute(
           path: RoutesConstants.profilescreen,
           builder: (BuildContext context, GoRouterState state) {
-            return  ProfileScreen();
+            return ProfileScreen();
+          },
+        ),
+        GoRoute(
+          path: RoutesConstants.otpScreen,
+          builder: (BuildContext context, GoRouterState state) {
+            return const OtpScreen();
+          },
+        ),
+        GoRoute(
+          path: RoutesConstants.withdrawScreen,
+          builder: (BuildContext context, GoRouterState state) {
+            return WithdrawScreen();
           },
         ),
       ],

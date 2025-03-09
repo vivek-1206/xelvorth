@@ -7,6 +7,10 @@ class RoutesConstants {
     static const String portpolio2 = '/portpolio2';
   static const String walletScreen = "/wallet";
   static const String profilescreen  = "/profile";
+  static const String otpScreen = "/OtpScreen";
+  static const String resetPasswordScreen = "/ResetPasswordScreen";
+  static const String withdrawScreen = "/withdraw";
+  static const String homescreen1 = "/screen1";
 }
 
  

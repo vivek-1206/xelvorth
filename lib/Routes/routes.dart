@@ -25,7 +25,8 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: RoutesConstants.splashscreen,
+      initialLocation: RoutesConstants.splashscreen
+      ,
       routes: <RouteBase>[
         GoRoute(
           path: RoutesConstants.splashscreen,

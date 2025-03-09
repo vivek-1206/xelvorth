@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/Home/home2/homescreen2.dart';
+import 'package:xelvorth/Features/Home/home3/homescreen3.dart';
 
 class Portfolio extends StatefulWidget {
   const Portfolio({ Key? key }) : super(key: key);
@@ -91,7 +93,9 @@ class _PortfolioState extends State<Portfolio> {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Homescreen3()));
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
                         padding: EdgeInsets.symmetric(vertical: 14),
@@ -158,7 +162,9 @@ class _PortfolioState extends State<Portfolio> {
               SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Homescreen2()));
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     padding: EdgeInsets.symmetric(vertical: 14, horizontal: 100),
@@ -277,7 +283,7 @@ class _PortfolioState extends State<Portfolio> {
                     ),
                   ),
                 ),
-                SizedBox(width: 50), 
+                SizedBox(width: 25), 
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {

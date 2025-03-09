@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/mainscreen.dart';
 
 class Homescreen3  extends StatefulWidget {
   @override
@@ -18,7 +19,11 @@ class _InvestmentScreenState extends State<Homescreen3> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.purple),
-          onPressed: () {},
+          onPressed: () {
+            
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Mainscreen()));
+                    
+          },
         ),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -167,7 +172,9 @@ class _InvestmentScreenState extends State<Homescreen3> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                 onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Mainscreen()));
+                      },
                 child: Text("Sell", style: TextStyle(fontSize: 18)),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,

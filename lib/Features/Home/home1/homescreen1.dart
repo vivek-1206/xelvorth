@@ -147,17 +147,6 @@ Widget filterOption(String label, int index) {
           )
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        selectedItemColor:Color.fromARGB(255, 42, 26,70),
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.wallet), label: "Wallet"),
-          BottomNavigationBarItem(icon: Icon(Icons.pie_chart), label: "Portfolio"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-        ],
-      ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(

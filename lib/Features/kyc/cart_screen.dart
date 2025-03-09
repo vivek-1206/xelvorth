@@ -1,20 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/mainscreen.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: CartScreen(),
-    );
-  }
-}
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -110,7 +96,11 @@ class CartScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(onPressed: () => Navigator.pop(context), child: const Text("Cancel")),
-                  ElevatedButton(onPressed: () {}, child: const Text("Confirm")),
+                  ElevatedButton(onPressed: () {
+                    
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Mainscreen()));
+                   
+                  }, child: const Text("Confirm")),
                 ],
               ),
             ],

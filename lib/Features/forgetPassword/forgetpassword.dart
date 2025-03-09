@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/otpScreen/otpScreen.dart';
 import 'package:xelvorth/widgets/CustomButton.dart';
 import 'package:xelvorth/widgets/customTextField.dart';
 
@@ -41,7 +42,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             const SizedBox(height: 20),
             CustomButton(
               text: "Send OTP",
-              onPressed: () {
+              onPressed: () {  Navigator.push(context, MaterialPageRoute(builder: (context) => OtpScreen()));
                 // Handle OTP sending logic
                 print("OTP Sent to ${emailController.text}");
               },

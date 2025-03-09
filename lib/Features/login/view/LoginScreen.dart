@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:xelvorth/Features/forgetPassword/forgetpassword.dart';
+import 'package:xelvorth/Features/mainscreen.dart';
+import 'package:xelvorth/Features/registation/view/RegisterScreen.dart';
 import 'package:xelvorth/widgets/CustomButton.dart';
 import 'package:xelvorth/widgets/customTextField.dart';
 
@@ -147,7 +150,9 @@ class _LoginScreenState extends State<LoginScreen> {
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {}, // Forgot Password
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPasswordScreen()));
+                  }, // Forgot Password
                   child: Text("Forget Password ?", style: TextStyle(color: const Color.fromARGB(255, 42, 26, 70))),
                 ),
               ),
@@ -155,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
               // Login Button
               CustomButton(
                 text: "Login", onPressed: () { 
-
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => Mainscreen()));
                  },
                 
                 
@@ -170,7 +175,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text("Don't have an account?", style: TextStyle(color: Colors.black54)),
                     SizedBox(width: 5),
                     GestureDetector(
-                      onTap: () {}, // Navigate to Register Page
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
+                      }, // Navigate to Register Page
                       child: Text(
                         "Register",
                         style: TextStyle(color: const Color.fromARGB(255, 42, 26, 70), fontWeight: FontWeight.bold),

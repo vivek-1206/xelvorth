@@ -1,20 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/mainscreen.dart';
+import 'package:xelvorth/Features/profile/profile.dart';
 
-void main() {
-  runApp(const MyApp());
-}
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Kyc(),
-    );
-  }
-}
 
 class Kyc extends StatelessWidget {
   @override
@@ -60,7 +48,9 @@ class Kyc extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Mainscreen()));
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF4B367C), // Button color
                   shape: RoundedRectangleBorder(

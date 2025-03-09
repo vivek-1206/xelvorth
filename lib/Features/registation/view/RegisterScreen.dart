@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/login/view/LoginScreen.dart';
 import 'package:xelvorth/widgets/CustomButton.dart';
 import 'package:xelvorth/widgets/customTextField.dart';
 
@@ -61,7 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   SizedBox(height: 40),
                   // **Register Button**
                   CustomButton(text: "Register", onPressed: () { 
-                    
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
                    },),
       
                   // **Already have an account? Login**
@@ -70,7 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("Already have an account?", style: TextStyle(color: Colors.black54)),
-                      TextButton(onPressed: () {}, child: Text("Login", style: TextStyle(color: const Color.fromARGB(255, 42, 26, 70)))),
+                      TextButton(onPressed: () {  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));}, child: Text("Login", style: TextStyle(color: const Color.fromARGB(255, 42, 26, 70)))),
                     ],
                   ),
                   SizedBox(height: 20),

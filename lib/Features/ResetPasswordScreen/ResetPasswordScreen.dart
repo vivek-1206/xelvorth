@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/login/view/LoginScreen.dart';
 import 'package:xelvorth/widgets/CustomPasswordField.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("✅ Password Reset Successful!"), backgroundColor: Colors.green),
       );
-      // Navigate to login screen or perform any action after password reset
+      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
     }
   }
 

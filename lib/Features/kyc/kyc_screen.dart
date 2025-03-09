@@ -1,20 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/kyc/kyc.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: KycScreen(),
-    );
-  }
-}
 
 class KycScreen extends StatelessWidget {
   final TextEditingController fullNameController = TextEditingController();
@@ -79,7 +65,9 @@ class KycScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Kyc()));
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF4B367C),
                     shape: RoundedRectangleBorder(

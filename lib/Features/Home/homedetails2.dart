@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 import 'package:latlong2/latlong.dart';
+import 'package:xelvorth/Features/Home/home1/homescreen1.dart';
+import 'package:xelvorth/Features/mainscreen.dart';
 
 class Homedetails2 extends StatefulWidget {
   const Homedetails2({ Key? key }) : super(key: key);
@@ -44,7 +46,7 @@ class _Homedetails2State extends State<Homedetails2> {
                       child: IconButton(
                         icon: Icon(Icons.arrow_back, color: Colors.white),
                         onPressed: () {
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => Notifications()));
+                           Navigator.push(context, MaterialPageRoute(builder: (context) => Mainscreen()));
                         },
                       ),
                     ),

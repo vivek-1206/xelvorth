@@ -14,7 +14,8 @@ class RoutesConstants {
   static const String Kyc = "/Kyc";
   static const String ReturnScreen = "/ReturnScreen";
   static const String CartScreen = "/CartScreen";
-
+   static const String mainscreen = '/main';
+      static const String splashscreen = '/splash';
 }
 
  

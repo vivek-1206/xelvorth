@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:xelvorth/Features/mainscreen.dart';
 
 class Homescreen2 extends StatefulWidget {
   @override
@@ -26,7 +27,9 @@ class _InvestmentScreenState extends State<Homescreen2> {
               // Back Button
               IconButton(
                 icon: Icon(Icons.arrow_back, color: Colors.black),
-                onPressed: () => Navigator.pop(context),
+                 onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Mainscreen()));
+                      },
               ),
               SizedBox(height: 10),
 
@@ -174,7 +177,9 @@ class _InvestmentScreenState extends State<Homescreen2> {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   ),
                   onPressed: () {
-                    // Implement buy functionality
+                   
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Mainscreen()));
+                    
                   },
                   child: Text("Buy", style: TextStyle(fontSize: 18, color: Colors.white)),
                 ),

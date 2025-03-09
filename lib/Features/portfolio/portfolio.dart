@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:xelvorth/Features/portfolio/portfolio1.dart';
+import 'package:xelvorth/Features/Home/home2/homescreen2.dart';
+import 'package:xelvorth/Features/Home/home3/homescreen3.dart';
+import 'package:xelvorth/Features/kyc/return_screen.dart';
+
 
 class Portfolio extends StatefulWidget {
   const Portfolio({ Key? key }) : super(key: key);
@@ -13,6 +16,69 @@ class _PortfolioState extends State<Portfolio> {
   String selectedSort = "Land";
   bool isModalOpen = false;
 
+
+void _showInvestmentDetails(BuildContext context, Map<String, dynamic> holding) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    holding["title"],
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                       
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ReturnScreen()));
+                      
+                    }, 
+                    child: Row(
+                      children: [
+                        Text("History", style: TextStyle(color: Colors.purple[900], fontWeight: FontWeight.bold)),
+                        Icon(Icons.arrow_forward_ios, size: 14, color: Colors.purple[900]),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 5),
+              Text(
+                holding["current"],
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,color: Color.fromARGB(255, 18, 17, 17)),
+              ),
+              SizedBox(height: 20),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                     
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Homescreen2()));
+                    
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    padding: EdgeInsets.symmetric(vertical: 14, horizontal: 100),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  ),
+                  child: Text("Buy", style: TextStyle(color: Colors.white, fontSize: 16)),
+                ),
+              ),
+              SizedBox(height: 20,width: 50,),
+            ],
+          ),
+        );
+      },
+    );
+  }
   void _showSortByModal(BuildContext context) {
     setState(() {
       isModalOpen = true;
@@ -91,7 +157,9 @@ class _PortfolioState extends State<Portfolio> {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Homescreen3()));
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
                         padding: EdgeInsets.symmetric(vertical: 14),
@@ -103,7 +171,8 @@ class _PortfolioState extends State<Portfolio> {
                   SizedBox(width: 10),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () => _showInvestmentDetails(context, holding),
+                       onPressed: () => _showInvestmentDetails(context, holding),
+                     
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
                         padding: EdgeInsets.symmetric(vertical: 14),
@@ -119,61 +188,8 @@ class _PortfolioState extends State<Portfolio> {
         );
       },
     );
-  } void _showInvestmentDetails(BuildContext context, Map<String, dynamic> holding) {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
-      builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    holding["title"],
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  TextButton(
-                    onPressed: () {}, 
-                    child: Row(
-                      children: [
-                        Text("History", style: TextStyle(color: Colors.purple[900], fontWeight: FontWeight.bold)),
-                        Icon(Icons.arrow_forward_ios, size: 14, color: Colors.purple[900]),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 5),
-              Text(
-                holding["current"],
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,color: Color.fromARGB(255, 18, 17, 17)),
-              ),
-              SizedBox(height: 20),
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    padding: EdgeInsets.symmetric(vertical: 14, horizontal: 100),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                  ),
-                  child: Text("Buy", style: TextStyle(color: Colors.white, fontSize: 16)),
-                ),
-              ),
-              SizedBox(height: 20,width: 50,),
-            ],
-          ),
-        );
-      },
-    );
-  }
-
+  } 
+  
    
   @override
   Widget build(BuildContext context) {
@@ -212,7 +228,7 @@ class _PortfolioState extends State<Portfolio> {
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Portfolio()));
+                     
                     },
                     child: Text("My Holdings"),
                     style: OutlinedButton.styleFrom(
@@ -226,7 +242,7 @@ class _PortfolioState extends State<Portfolio> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Portfolio1()));
+                     // Navigator.push(context, MaterialPageRoute(builder: (context) => Portfolio1()));
                     },
                     child: Text("Exited"),
                     style: ElevatedButton.styleFrom(
@@ -308,24 +324,7 @@ class _PortfolioState extends State<Portfolio> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        notchMargin: 5,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(icon: Icon(Icons.home, color: Colors.grey), onPressed: () {}),
-            IconButton(icon: Icon(Icons.wallet, color: Colors.grey), onPressed: () {}),
-            ElevatedButton.icon(
-              onPressed: () {},
-              icon: Icon(Icons.show_chart, color: Colors.white),
-              label: Text("Portfolio", style: TextStyle(color: Colors.white)),
-              style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 42, 26, 70)),
-            ),
-            IconButton(icon: Icon(Icons.person, color: Colors.grey), onPressed: () {}),
-          ],
-        ),
-      ),
+     
     );
   }
 

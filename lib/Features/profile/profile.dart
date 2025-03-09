@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/kyc/kyc.dart';
+import 'package:xelvorth/Features/kyc/kyc_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFFF8F8F8), // Light grey background
-      resizeToAvoidBottomInset: false, // Prevents zebra crossing issue
-      body: SafeArea(
+  return Scaffold(
+    backgroundColor: Color(0xFFF8F8F8), 
+    resizeToAvoidBottomInset: false,
+    body: SafeArea(
+      child: SingleChildScrollView( 
+        physics: BouncingScrollPhysics(), 
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20), // Adjusted spacing
+              const SizedBox(height: 20), 
               const Text(
                 "Profile",
                 style: TextStyle(
@@ -24,44 +28,51 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 20),
 
               // ALERT KYC Box
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Row(
-                  children: [
-                    Icon(Icons.info, color: Colors.red, size: 24),
-                    const SizedBox(width: 10),
-                    const Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "ALERT",
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                          ),
-                          Text(
-                            "Your KYC is not completed",
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 55, 36, 102),
-                              fontSize: 14,
-                            ),
-                          ),
-                        ],
-                      ),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => KycScreen()));
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 18),
-                  ],
+                    child: Row(
+                      children: [
+                        Icon(Icons.info, color: Colors.red, size: 24),
+                        const SizedBox(width: 10),
+                        const Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "ALERT",
+                                style: TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                ),
+                              ),
+                              Text(
+                                "Your KYC is not completed",
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 55, 36, 102),
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Icon(Icons.arrow_forward_ios,
+                            color: Colors.grey, size: 18),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
 
-              const SizedBox(height: 16), // Reduced spacing
+
+              const SizedBox(height: 16),
 
               // Profile Card
               Container(
@@ -101,7 +112,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 16), // Reduced spacing
+              const SizedBox(height: 16),
 
               // Account Section
               sectionTitle("Account"),
@@ -116,53 +127,16 @@ class ProfileScreen extends StatelessWidget {
               // Others Section
               sectionTitle("Others"),
               settingItem(Icons.info, "About us"),
+
+              const SizedBox(height: 20), // Extra spacing at bottom
             ],
           ),
         ),
       ),
-
-bottomNavigationBar: BottomAppBar(
-  shape: const CircularNotchedRectangle(),
-  child: Container(
-    height: 65, // Maintains proper alignment
-    decoration: BoxDecoration(
-      color: Colors.white, // Keeps the bottom bar white
-      borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(20),
-        topRight: Radius.circular(20),
-      ),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.shade200, // Light grey shadow
-          blurRadius: 6,
-          offset: Offset(0, -2),
-        ),
-      ],
     ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        IconButton(icon: Icon(Icons.home, color: Colors.grey), onPressed: () {}),
-        IconButton(icon: Icon(Icons.account_balance_wallet, color: Colors.grey), onPressed: () {}),
-        IconButton(icon: Icon(Icons.show_chart, color: Colors.grey), onPressed: () {}),
-        ElevatedButton.icon(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 55, 36, 102),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
-          ),
-          onPressed: () {},
-          icon: Icon(Icons.person, color: Colors.white),
-          label: Text("Profile", style: TextStyle(color: Colors.white)),
-        ),
-      ],
-    ),
-  ),
-),
+  );
+}
 
- );
-  }
 // Section Title
   Widget sectionTitle(String title) {
     return Padding(

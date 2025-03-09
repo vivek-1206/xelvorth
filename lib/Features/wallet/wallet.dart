@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/withdraw/withdraw.dart';
 
 class WalletScreen extends StatefulWidget {
   @override
@@ -57,7 +58,7 @@ class _WalletScreenState extends State<WalletScreen> {
                 SizedBox(width: 10),
                 Expanded(child: buildActionButton(Icons.sync_alt, "Invest",(){})),
                 SizedBox(width: 10),
-                Expanded(child: buildActionButton(Icons.download, "Withdraw",(){})),
+                Expanded(child: buildActionButton(Icons.download, "Withdraw",(){Navigator.push(context, MaterialPageRoute(builder: (context) => WithdrawScreen()));})),
               ],
             ),
             const SizedBox(height: 20),
@@ -96,52 +97,7 @@ class _WalletScreenState extends State<WalletScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-  elevation: 0, // Remove default elevation
-  color: Colors.transparent, // Keep it transparent to apply custom styling
-  child: Container(
-    height: 60,
-    decoration: BoxDecoration(
-      color: Colors.white, // White background (#FFFFFF)
-      borderRadius: BorderRadius.circular(25), // Smooth rounded corners
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.shade200, // Light grey shadow
-          blurRadius: 6, // Softer blur for a more natural look
-          offset: const Offset(0, 3), // Slightly raised effect
-        ),
-      ],
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        IconButton(
-          icon: const Icon(Icons.home, color: Colors.grey),
-          onPressed: () {},
-        ),
-        ElevatedButton.icon(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 55, 36, 102), // Primary button color
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-          ),
-          onPressed: () {},
-          icon: const Icon(Icons.account_balance_wallet, color: Colors.white),
-          label: const Text("Wallet", style: TextStyle(color: Colors.white)),
-        ),
-        IconButton(
-          icon: const Icon(Icons.credit_card, color: Colors.grey), // Icon after Wallet
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: const Icon(Icons.search, color: Colors.grey),
-          onPressed: () {},
-        ),
-      ],
-    ),
-  ),
-),
+     
  );
   }
 

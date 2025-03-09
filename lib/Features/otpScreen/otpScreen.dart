@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/ResetPasswordScreen/ResetPasswordScreen.dart';
 import 'package:xelvorth/widgets/OtpInput.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -16,11 +17,14 @@ class _OtpScreenState extends State<OtpScreen> {
     if (_otpController.text.trim() == _correctOtp) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("✅ OTP Verified Successfully!"), backgroundColor: Colors.green),
+        
       );
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ResetPasswordScreen()));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("❌ Incorrect OTP! Try Again."), backgroundColor: Colors.red),
       );
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ResetPasswordScreen()));
     }
   }
 

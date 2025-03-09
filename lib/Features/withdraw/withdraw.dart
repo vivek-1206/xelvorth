@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/mainscreen.dart';
 
 class WithdrawScreen extends StatefulWidget {
   @override
@@ -29,6 +30,7 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
           backgroundColor: Colors.green,
         ),
       );
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Mainscreen()));
     }
   }
 

@@ -9,10 +9,12 @@ import 'package:xelvorth/Features/kyc/cart_screen.dart';
 import 'package:xelvorth/Features/kyc/kyc.dart';
 import 'package:xelvorth/Features/kyc/kyc_screen.dart';
 import 'package:xelvorth/Features/kyc/return_screen.dart';
+import 'package:xelvorth/Features/mainscreen.dart';
 import 'package:xelvorth/Features/otpScreen/otpScreen.dart';
 import 'package:xelvorth/Features/portfolio/portfolio.dart';
-import 'package:xelvorth/Features/portfolio/portfolio1.dart';
+
 import 'package:xelvorth/Features/profile/profile.dart';
+import 'package:xelvorth/Features/splashscreen.dart';
 import 'package:xelvorth/Features/wallet/wallet.dart';
 import 'package:xelvorth/Features/withdraw/withdraw.dart';
 import 'package:xelvorth/Routes/routes_constants.dart';
@@ -23,18 +25,18 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: RoutesConstants.CartScreen,
+      initialLocation: RoutesConstants.splashscreen,
       routes: <RouteBase>[
         GoRoute(
-          path: RoutesConstants.resetPasswordScreen,
+          path: RoutesConstants.splashscreen,
           builder: (BuildContext context, GoRouterState state) {
-            return const ResetPasswordScreen();
+            return const Splashscreen();
           },
         ),
         GoRoute(
-          path: RoutesConstants.homescreen,
+          path: RoutesConstants.mainscreen,
           builder: (BuildContext context, GoRouterState state) {
-            return const Home();
+            return const Mainscreen();
           },
         ),
         GoRoute(
@@ -43,12 +45,7 @@ class AppRouter {
             return const Homescreen1();
           },
         ),
-        GoRoute(
-          path: RoutesConstants.portpolio1,
-          builder: (BuildContext context, GoRouterState state) {
-            return const Portfolio1();
-          },
-        ),
+       
                 GoRoute(
           path: RoutesConstants.notification,
           builder: (BuildContext context, GoRouterState state) {

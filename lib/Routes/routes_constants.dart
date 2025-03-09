@@ -8,6 +8,7 @@ class RoutesConstants {
   static const String profilescreen  = "/profile";
   static const String otpScreen = "/OtpScreen";
   static const String resetPasswordScreen = "/ResetPasswordScreen";
+  static const String withdrawScreen = "/withdraw";
 }
 
  

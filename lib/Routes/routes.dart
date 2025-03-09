@@ -9,6 +9,7 @@ import 'package:xelvorth/Features/portfolio/portfolio.dart';
 import 'package:xelvorth/Features/portfolio/portfolio1.dart';
 import 'package:xelvorth/Features/profile/profile.dart';
 import 'package:xelvorth/Features/wallet/wallet.dart';
+import 'package:xelvorth/Features/withdraw/withdraw.dart';
 import 'package:xelvorth/Routes/routes_constants.dart';
 
 class AppRouter {
@@ -71,6 +72,12 @@ class AppRouter {
           path: RoutesConstants.otpScreen,
           builder: (BuildContext context, GoRouterState state) {
             return const OtpScreen();
+          },
+        ),
+        GoRoute(
+          path: RoutesConstants.withdrawScreen,
+          builder: (BuildContext context, GoRouterState state) {
+            return WithdrawScreen();
           },
         ),
       ],

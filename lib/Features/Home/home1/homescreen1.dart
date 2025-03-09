@@ -96,6 +96,7 @@ class _RealEstateScreenState extends State<Homescreen1> {
               child: ListView.builder(
                 itemCount: 3,
                 itemBuilder: (context, index) {
+                  bool isFavorite = false; // Add this line to define isFavorite
                   return Card(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                     margin: EdgeInsets.symmetric(vertical: 10),
@@ -137,6 +138,7 @@ class _RealEstateScreenState extends State<Homescreen1> {
                               ),
                             ],
                           ),
+                          
                           SizedBox(width: 10),
                           Expanded(
                             child: Column(
@@ -146,7 +148,7 @@ class _RealEstateScreenState extends State<Homescreen1> {
                                 SizedBox(height: 5),
                                 Text("Total Value: \$130,800.00", style: TextStyle(color: Colors.grey)),
                                 SizedBox(height: 5),
-                                LinearProgressIndicator(value: 0.9, color:Color.fromARGB(255, 42, 26,70),),
+                                LinearProgressIndicator(value: 0.9, color: Color.fromARGB(255, 42, 26, 70)),
                                 SizedBox(height: 5),
                                 Row(
                                   children: [
@@ -162,7 +164,7 @@ class _RealEstateScreenState extends State<Homescreen1> {
                                     Container(
                                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                       decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 42, 26,70),
+                                        color: Color.fromARGB(255, 42, 26, 70),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       child: Text("Energy", style: TextStyle(color: Colors.white)),
@@ -170,11 +172,18 @@ class _RealEstateScreenState extends State<Homescreen1> {
                                   ],
                                 ),
                                 SizedBox(height: 5),
-                                Text("\$2,000.00 /share", style: TextStyle(fontWeight: FontWeight.bold)),
+                                GestureDetector(
+                                  onTap: () {}, 
+                                  child: Text("\$2,000.00 /share", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue)),
+                                ),
                               ],
                             ),
                           ),
-                          Icon(Icons.favorite_border, color: Colors.grey),
+                          IconButton(
+                            // ignore: dead_code
+                            icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border, color: isFavorite ? Colors.red : Colors.grey),
+                            onPressed: () {},
+                          ),
                         ],
                       ),
                     ),

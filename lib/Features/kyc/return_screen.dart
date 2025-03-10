@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/Home/home2/homescreen2.dart';
+import 'package:xelvorth/Features/Home/home3/homescreen3.dart';
+import 'package:xelvorth/Features/Home/homedetails2.dart';
+import 'package:xelvorth/Features/mainscreen.dart';
 
 
 class ReturnScreen extends StatelessWidget {
@@ -301,7 +305,9 @@ Widget _specItem(String iconPath, String title, String value, {bool isRightAlign
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Homescreen3()));
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Color.fromRGBO(207, 205, 205, 1),
               padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 25),
@@ -312,7 +318,7 @@ Widget _specItem(String iconPath, String title, String value, {bool isRightAlign
             child: const Text("Sell", style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
           ),
           ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context) => Homescreen2()))},
             style: ElevatedButton.styleFrom(
               backgroundColor: Color.fromRGBO(103, 199, 101, 1),
               padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 25),

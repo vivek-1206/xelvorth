@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:xelvorth/Features/Home/home1/homescreen1.dart';
 import 'package:xelvorth/Features/Home/home2/homescreen2.dart';
-import 'package:xelvorth/Features/kyc/cart_screen.dart';
+
 import 'package:xelvorth/Features/mainscreen.dart';
 
 class Homedetails extends StatefulWidget {
@@ -639,7 +639,7 @@ class _HomedetailsState extends State<Homedetails> {
                           200, 60),
                       elevation: 4, 
                     ),
-                    onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));},
+                    onPressed: () {},
                     child: Text(
                       "Invest Now",
                       style: GoogleFonts.poppins(

@@ -21,17 +21,21 @@ class ReturnScreen extends StatelessWidget {
         ),
         centerTitle: false,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _investmentSummary(),
-            const SizedBox(height: 20),
-            _specificationSection(),
-            const SizedBox(height: 20),
-            _historySection(),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _investmentSummary(),
+              const SizedBox(height: 20),
+              _specificationSection(),
+              const SizedBox(height: 20),
+              _historySection(),
+              const SizedBox(height: 20),
+              _buildBottomButtons(context),
+            ],
+          ),
         ),
       ),
     );
@@ -194,36 +198,32 @@ Widget _specItem(String iconPath, String title, String value, {bool isRightAlign
 
 
   Widget _historySection() {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const Text(
+        "History",
+        style: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Color.fromRGBO(0, 0, 0, 1),
+        ),
+      ),
+      const SizedBox(height: 5),
+      _historyHeader(),
+      // Use a Column instead of a ListView to prevent scrolling
+      Column(
         children: [
-          const Text(
-            "History",
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Color.fromRGBO(0, 0, 0, 1),
-            ),
-          ),
-          // const SizedBox(height: 10),
-          // _historyHeader(),
-          const SizedBox(height: 5),
-          Expanded(
-            child: ListView(
-              children: [
-                _historyHeader(),
-                _historyItem("266435FDRTE", "30%", "+ \$2,000", "01/01/24"),
-                _historyItem("266435FDRTE", "30%", "+ \$2,000", "01/02/24"),
-                _historyItem("266435FDRTE", "30%", "+ \$2,000", "01/03/24"),
-                _historyItem("266435FDRTE", "30%", "+ \$2,000", "01/04/24"),
-              ],
-            ),
-          ),
+          _historyItem("266435FDRTE", "30%", "+ \$2,000", "01/01/24"),
+          _historyItem("266435FDRTE", "30%", "+ \$2,000", "01/02/24"),
+          _historyItem("266435FDRTE", "30%", "+ \$2,000", "01/03/24"),
+          _historyItem("266435FDRTE", "30%", "+ \$2,000", "01/04/24"),
         ],
       ),
-    );
-  }
+    ],
+  );
+}
+
 
   Widget _historyHeader() {
   return Padding(
@@ -287,4 +287,44 @@ Widget _specItem(String iconPath, String title, String value, {bool isRightAlign
       ),
     );
   }
+
+
+  Widget _buildBottomButtons(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(255, 255, 255, 1),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color.fromRGBO(207, 205, 205, 1),
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 25),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              )
+            ),
+            child: const Text("Sell", style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
+          ),
+          ElevatedButton(
+            onPressed: () => {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color.fromRGBO(103, 199, 101, 1),
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 25),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              )
+            ),
+            child: const Text("Buy", style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
+          ),
+        ],
+      ),
+    );
+  }
+
 }

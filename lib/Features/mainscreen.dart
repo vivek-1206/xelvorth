@@ -55,7 +55,7 @@ class _MainscreenState extends State<Mainscreen> {
             children: [
               _buildNavButton(Icons.home, "Home", 0),
               _buildNavButton(Icons.account_balance_wallet, "Wallet", 1),
-              _buildNavButton(Icons.credit_card, "Cards", 2),
+              _buildNavButton(Icons.show_chart, "Portfolio", 2),
               _buildNavButton(Icons.person, "Profile", 3),
             ],
           ),

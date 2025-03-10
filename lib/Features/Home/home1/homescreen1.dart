@@ -16,7 +16,7 @@ class _Homescreen1State extends State<Homescreen1> {
   int selectedCategory = 0;
   int selectedFilter = 0;
   List<String> categories = ["All", "Shortlisted", "Invested"];
-  List<String> filters = ["Land", "Automobiles", "Energy"];
+  List<String> filters = ["ALL","Land", "Energy","Automobiles"];
   Set<int> favoriteIndices = {};
 
   final List<Map<String, dynamic>> properties = [
@@ -30,6 +30,17 @@ class _Homescreen1State extends State<Homescreen1> {
       "navigation": Homedetails2(),
       "location": "IND/MH/Mumbai",
       "return": "10.25%"
+    },
+    {
+      "name": "Solar Energy Project",
+      "image": "assets/solar.png",
+      "category": "Energy",
+      "progress": 0.90,
+      "value": "\$130,800.00",
+      "pricePerShare": "\$2,000.00",
+      "navigation": Homedetails3(),
+      "location": "IND/Hyd/Shamshabad",
+      "return": "12.51%"
     },
     {
       "name": "Luxury Villa",
@@ -76,20 +87,10 @@ class _Homescreen1State extends State<Homescreen1> {
       "navigation": Homedetails(),
       "location": "IND/MH/Mumbai",
     },
-    {
-      "name": "Solar Energy Project",
-      "image": "assets/solar.png",
-      "category": "Energy",
-      "progress": 0.90,
-      "value": "\$130,800.00",
-      "pricePerShare": "\$2,000.00",
-      "navigation": Homedetails3(),
-      "location": "IND/Hyd/Shamshabad",
-      "return": "12.51%"
-    }
+    
   ];
   List<Map<String, dynamic>> getFilteredProperties() {
-    if (selectedFilter == -1) return properties;
+    if (selectedFilter == 0) return properties;
     String selectedCategoryName = filters[selectedFilter];
     return properties.where((p) => p["category"] == selectedCategoryName).toList();
   }
@@ -127,16 +128,21 @@ class _Homescreen1State extends State<Homescreen1> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      filterOption("Land", 0),
+                      filterOption("ALL", 0),
                       SizedBox(width: 12),
-                      filterOption("Automobiles", 1),
+                      filterOption("Lands", 1),
                     ],
                   ),
                   SizedBox(height: 12),
-                  Align(
-                    alignment: Alignment.center,
-                    child: filterOption("Energy", 2),
+                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      filterOption("Automobiles", 2),
+                      SizedBox(width: 12),
+                      filterOption("Energy", 3),
+                    ],
                   ),
+                 
                   SizedBox(height: 20),
                 ],
               ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:xelvorth/Features/Home/home2/homescreen2.dart';
+import 'package:xelvorth/Features/Home/home3/homescreen3.dart';
+import 'package:xelvorth/Features/kyc/return_screen.dart';
 
 class Portfolio extends StatefulWidget {
   const Portfolio({ Key? key }) : super(key: key);
@@ -81,7 +84,17 @@ class _PortfolioState extends State<Portfolio> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(holding["title"], style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                  Text("History >", style: TextStyle(color: Color.fromARGB(255, 55, 36, 102), fontWeight: FontWeight.bold)),
+                  TextButton(
+                    onPressed: () {
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => ReturnScreen()));
+                    }, 
+                    child: Row(
+                      children: [
+                        Text("History", style: TextStyle(color: Colors.purple[900], fontWeight: FontWeight.bold)),
+                        Icon(Icons.arrow_forward_ios, size: 14, color: Colors.purple[900]),
+                      ],
+                    ),
+                  ),
                 ],
               ),
               SizedBox(height: 5),
@@ -91,7 +104,9 @@ class _PortfolioState extends State<Portfolio> {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                         Navigator.push(context, MaterialPageRoute(builder: (context) => Homescreen3()));
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
                         padding: EdgeInsets.symmetric(vertical: 14),
@@ -140,7 +155,9 @@ class _PortfolioState extends State<Portfolio> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   TextButton(
-                    onPressed: () {}, 
+                    onPressed: () {
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => ReturnScreen()));
+                    }, 
                     child: Row(
                       children: [
                         Text("History", style: TextStyle(color: Colors.purple[900], fontWeight: FontWeight.bold)),
@@ -158,7 +175,9 @@ class _PortfolioState extends State<Portfolio> {
               SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                     Navigator.push(context, MaterialPageRoute(builder: (context) => Homescreen2()));
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     padding: EdgeInsets.symmetric(vertical: 14, horizontal: 100),
@@ -311,9 +330,9 @@ class _PortfolioState extends State<Portfolio> {
                   ),
                 ),
                 SizedBox(width: 50),
-                SizedBox(width: 90, child: Text("Current", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
-                SizedBox(width: 90, child: Text("ROI", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
-                SizedBox(width: 60, child: Text("Returns", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
+                SizedBox(width: 70, child: Text("Current", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
+                SizedBox(width: 80, child: Text("ROI", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
+                SizedBox(width: 50, child: Text("Returns", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
               ],
             ),
              SizedBox(height: 10),

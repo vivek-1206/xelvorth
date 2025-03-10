@@ -149,8 +149,8 @@ class ReturnScreen extends StatelessWidget {
       Row(
         children: [
           Expanded(child: _specItem("assets/money-cash-dollar-coin--accounting-billing-payment-cash-coin-currency-money-finance.png", "Inv. Amount", "₹ 100.00", isRightAligned: false)),
-          Spacer(),
-          Expanded(child: _specItem("assets/money-atm-card-3--deposit-money-payment-finance-atm-withdraw.png", "Total Returns (%)", "+17.45 %", isRightAligned: false)),
+          SizedBox(width: 50,),
+          Expanded(child: _specItem("assets/money-atm-card-3--deposit-money-payment-finance-atm-withdraw.png", "Total Returns(%)", "+17.45 %", isRightAligned: false)),
         ],
       ),
       const SizedBox(height: 10),
@@ -158,7 +158,7 @@ class ReturnScreen extends StatelessWidget {
       Row(
         children: [
           Expanded(child: _specItem("assets/time.png", "For Timing", "15 Days", isRightAligned: false)),
-          const Spacer(),
+          SizedBox(width: 50,),
           Expanded(child: _specItem("assets/idreturns.png", "1D Returns (%)", "+1.15 %", isRightAligned: false)),
         ],
       ),
@@ -167,7 +167,7 @@ class ReturnScreen extends StatelessWidget {
       Row(
         children: [
           Expanded(child: _specItem("assets/calendar.png", "Return Interval", "Every Day", isRightAligned: false)),
-          const Spacer(),
+          SizedBox(width: 50,),
           Expanded(child: _specItem("assets/time.png", "Repeat Time", "90 Times", isRightAligned: false)),
         ],
       ),

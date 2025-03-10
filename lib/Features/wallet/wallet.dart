@@ -54,11 +54,15 @@ class _WalletScreenState extends State<WalletScreen> {
             const SizedBox(height: 16),
             Row(
               children: [
-                Expanded(child: buildActionButton(Icons.add, "Deposit",(){})),
+                Expanded(child: buildActionButton(Icons.add, "Deposit", () {})),
                 SizedBox(width: 10),
-                Expanded(child: buildActionButton(Icons.sync_alt, "Invest",(){})),
+                Expanded(child: buildActionButton(Icons.sync_alt, "Invest", () {})),
                 SizedBox(width: 10),
-                Expanded(child: buildActionButton(Icons.download, "Withdraw",(){Navigator.push(context, MaterialPageRoute(builder: (context) => WithdrawScreen()));})),
+                Expanded(
+                    child: buildActionButton(Icons.download, "Withdraw", () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => WithdrawScreen()));
+                })),
               ],
             ),
             const SizedBox(height: 20),
@@ -83,54 +87,52 @@ class _WalletScreenState extends State<WalletScreen> {
               child: ListView(
                 children: isDepositSelected
                     ? [
-                        buildTransactionCard("Bank", "Pending", Colors.yellow.shade700),
-                        buildTransactionCard("UPI", "Approved", Colors.green.shade700),
-                        buildTransactionCard("UPI", "Rejected", Colors.red),
+                        buildTransactionCard("Bank", "Pending", Colors.yellow.shade700, "₹5000", "TXN12345"),
+                        buildTransactionCard("UPI", "Approved", Colors.green.shade700, "₹2000", "TXN67890"),
+                        buildTransactionCard("UPI", "Rejected", Colors.red, "₹1500", "TXN54321"),
                       ]
                     : [
-                        buildTransactionCard("Bank", "Pending", Colors.yellow.shade700),
-                        buildTransactionCard("UPI", "Approved", Colors.green.shade700),
-                         buildTransactionCard("UPI", "Rejected", Colors.red),
+                        buildTransactionCard("Bank Transfer", "Processing", Colors.blue, "₹7000", "TXN98765"),
+                        buildTransactionCard("Wallet", "Completed", Colors.green, "₹4500", "TXN45678"),
+                        buildTransactionCard("UPI", "Failed", Colors.red, "₹3000", "TXN11223"),
                       ],
               ),
             ),
           ],
         ),
       ),
-     
- );
+    );
   }
 
   Widget buildActionButton(IconData icon, String label, VoidCallback onTap) {
-  return GestureDetector(
-    onTap: onTap, // Handle tap to navigate
-    child: Container(
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 55, 36, 102),
-        borderRadius: BorderRadius.circular(25),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade300,
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
+    return GestureDetector(
+      onTap: onTap, // Handle tap to navigate
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 55, 36, 102),
+          borderRadius: BorderRadius.circular(25),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade300,
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: Colors.white, size: 30),
+            const SizedBox(height: 8),
+            Text(label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+          ],
+        ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, color: Colors.white, size: 30),
-          const SizedBox(height: 8),
-          Text(label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-        ],
-      ),
-    ),
-  );
-}
+    );
+  }
 
-
-  Widget buildTransactionCard(String gateway, String status, Color statusColor) {
+  Widget buildTransactionCard(String gateway, String status, Color statusColor, String amount, String txnId) {
     Color textColor = Colors.black54;
 
     return Card(
@@ -147,7 +149,7 @@ class _WalletScreenState extends State<WalletScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("TRX\n2662NJ2B67D1W", style: TextStyle(color: textColor)),
+                Text("TRX\n$txnId", style: TextStyle(color: textColor)),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -165,7 +167,7 @@ class _WalletScreenState extends State<WalletScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text("Amount", style: TextStyle(color: textColor)),
-                    Text("₹100", style: TextStyle(color: textColor)),
+                    Text(amount, style: TextStyle(color: textColor)),
                   ],
                 ),
                 Column(
@@ -205,7 +207,7 @@ class _WalletScreenState extends State<WalletScreen> {
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(
-            color: isSelected ? Color.fromARGB(255, 55, 36, 102): Colors.white,
+            color: isSelected ? Color.fromARGB(255, 55, 36, 102) : Colors.white,
             borderRadius: BorderRadius.circular(25),
             border: Border.all(color: Color.fromARGB(255, 55, 36, 102), width: 2),
           ),

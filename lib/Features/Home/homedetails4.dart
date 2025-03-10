@@ -1,29 +1,30 @@
-import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-
+import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
 import 'package:latlong2/latlong.dart';
 import 'package:xelvorth/Features/Home/home1/homescreen1.dart';
-import 'package:xelvorth/Features/mainscreen.dart';
+import 'package:xelvorth/Features/Home/home2/homescreen2.dart';
+import 'package:xelvorth/Features/kyc/return_screen.dart';
 
-class Homedetails2 extends StatefulWidget {
-  const Homedetails2({ Key? key }) : super(key: key);
+import 'package:xelvorth/Features/mainscreen.dart';
+class Homedetails4 extends StatefulWidget {
+  const Homedetails4({ Key? key }) : super(key: key);
 
   @override
-  _Homedetails2State createState() => _Homedetails2State();
+  _Homedetails4State createState() => _Homedetails4State();
 }
 
-class _Homedetails2State extends State<Homedetails2> {
+class _Homedetails4State extends State<Homedetails4> {
   final MapController _mapController = MapController();
   final double _zoomLevel = 12.0;
 
   List<String> photoAssets = [
   'assets/Detailphoto1.png',
-  'assets/Detailsphoto3.png',
   'assets/Detailsphoto2.png',
+  'assets/Detailsphoto3.png',
   'assets/Detailphoto1.png',
   'assets/Detailsphoto2.png',
   'assets/Detailsphoto3.png',
@@ -39,14 +40,14 @@ class _Homedetails2State extends State<Homedetails2> {
               children: [
                 Stack(
                   children: [
-                    Image.asset('assets/luxuryroom.png', height: 250, width: double.infinity, fit: BoxFit.cover),
+                    Image.asset("assets/image.png", height: 250, width: double.infinity, fit: BoxFit.cover),
                     Positioned(
                       top: 20,
                       left: 10,
                       child: IconButton(
                         icon: Icon(Icons.arrow_back, color: Colors.white),
                         onPressed: () {
-                           Navigator.push(context, MaterialPageRoute(builder: (context) => Mainscreen()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Mainscreen()));
                         },
                       ),
                     ),
@@ -611,7 +612,7 @@ class _Homedetails2State extends State<Homedetails2> {
                           ),
                           SizedBox(height: 4),
                           Text(
-                            "Coming Soon",
+                            "\$20,000.00",
                             style: GoogleFonts.poppins(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -638,9 +639,11 @@ class _Homedetails2State extends State<Homedetails2> {
                           200, 60),
                       elevation: 4, 
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ReturnScreen()));
+                    },
                     child: Text(
-                      "Shortlist",
+                      "Invest Now",
                       style: GoogleFonts.poppins(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -718,3 +721,4 @@ Widget detailTile(String title, String value, {IconData? icon}) {
     ),
   );
 }
+

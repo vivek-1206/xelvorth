@@ -41,7 +41,7 @@ class _HomedetailsState extends State<Homedetails> {
               children: [
                 Stack(
                   children: [
-                    Image.asset('assets/luxuryroom.png', height: 250, width: double.infinity, fit: BoxFit.cover),
+                    Image.asset('assets/luxuryupcoming.png', height: 250, width: double.infinity, fit: BoxFit.cover),
                     Positioned(
                       top: 20,
                       left: 10,
